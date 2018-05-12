@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SpellbookManagerV2</string>
+
+    <string-array name="spell_schools">
+        <item>Abjuration</item>
+        <item>Conjuration</item>
+        <item>Divination</item>
+        <item>Enchantment</item>
+        <item>Evocation</item>
+        <item>Illusion</item>
+        <item>Necromancy</item>
+        <item>Transmutation</item>
+        <item>Other</item>
+    </string-array>
+</resources>

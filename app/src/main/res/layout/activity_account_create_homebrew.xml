@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/create_homebrew_activity_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create homebrew spells"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/create_homebrew_activity_scrollview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_homebrew_activity_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_homebrew_activity_title">
+
+        <LinearLayout
+            android:id="@+id/create_homebrew_input_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/create_homebrew_edit_texts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/create_homebrew_spell_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter the name of your spell"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_casting_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Casting time"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_components"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Components used"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_material"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Materials used"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_ritual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ritual required?"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_concentration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Concentration required?"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description / mechanics of spell"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_duration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Spell duration"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Spell level"
+                    android:inputType="text" />
+                <EditText
+                    android:id="@+id/create_homebrew_spell_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Spell range"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/create_homebrew_school_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp">
+            </Spinner>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/create_homebrew_class_checkboxes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/bard_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Bard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cleric_checkbox"/>
+                <CheckBox
+                    android:id="@+id/cleric_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cleric"
+                    app:layout_constraintStart_toEndOf="@+id/bard_checkbox"
+                    app:layout_constraintEnd_toStartOf="@id/druid_checkbox"/>
+                <CheckBox
+                    android:id="@+id/druid_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Druid"
+                    app:layout_constraintStart_toEndOf="@+id/cleric_checkbox"
+                    app:layout_constraintEnd_toStartOf="@+id/paladin_checkbox"/>
+                <CheckBox
+                    android:id="@+id/paladin_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Paladin"
+                    app:layout_constraintStart_toEndOf="@+id/druid_checkbox"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+                <CheckBox
+                    android:id="@+id/ranger_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ranger"
+                    app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/cleric_checkbox"/>
+                <CheckBox
+                    android:id="@+id/sorcerer_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Sorcerer"
+                    app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+                    app:layout_constraintStart_toEndOf="@+id/bard_checkbox"
+                    app:layout_constraintEnd_toStartOf="@id/druid_checkbox"/>
+                <CheckBox
+                    android:id="@+id/warlock_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Warlock"
+                    app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+                    app:layout_constraintStart_toEndOf="@+id/cleric_checkbox"
+                    app:layout_constraintEnd_toStartOf="@+id/paladin_checkbox"/>
+                <CheckBox
+                    android:id="@+id/wizard_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Wizard"
+                    app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+                    app:layout_constraintStart_toEndOf="@+id/druid_checkbox"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/create_homebrew_activity_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/create_character_constraint_layout">
+
+    <EditText
+        android:id="@+id/character_name_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Character name"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/level_entry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Character level"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/proficiency_bonus_entry"
+        app:layout_constraintTop_toBottomOf="@+id/character_name_entry"/>
+
+    <EditText
+        android:id="@+id/proficiency_bonus_entry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Proficiency bonus"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/level_entry"
+        app:layout_constraintTop_toBottomOf="@+id/character_name_entry" />
+
+    <EditText
+        android:id="@+id/intelligence_entry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Intelligence"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/proficiency_bonus_entry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/wisdom_entry"/>
+    <EditText
+        android:id="@+id/wisdom_entry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Wisdom"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/proficiency_bonus_entry"
+        app:layout_constraintStart_toEndOf="@id/intelligence_entry"
+        app:layout_constraintEnd_toStartOf="@id/charisma_entry"/>
+    <EditText
+        android:id="@+id/charisma_entry"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Charisma"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/proficiency_bonus_entry"
+        app:layout_constraintStart_toEndOf="@+id/wisdom_entry"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/bard_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bard"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_entry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cleric_checkbox"/>
+    <CheckBox
+        android:id="@+id/cleric_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Cleric"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_entry"
+        app:layout_constraintStart_toEndOf="@+id/bard_checkbox"
+        app:layout_constraintEnd_toStartOf="@id/druid_checkbox"/>
+    <CheckBox
+        android:id="@+id/druid_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Druid"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_entry"
+        app:layout_constraintStart_toEndOf="@+id/cleric_checkbox"
+        app:layout_constraintEnd_toStartOf="@+id/paladin_checkbox"/>
+    <CheckBox
+        android:id="@+id/paladin_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Paladin"
+        app:layout_constraintTop_toBottomOf="@+id/charisma_entry"
+        app:layout_constraintStart_toEndOf="@+id/druid_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/ranger_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ranger"
+        app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cleric_checkbox"/>
+    <CheckBox
+        android:id="@+id/sorcerer_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sorcerer"
+        app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+        app:layout_constraintStart_toEndOf="@+id/bard_checkbox"
+        app:layout_constraintEnd_toStartOf="@id/druid_checkbox"/>
+    <CheckBox
+        android:id="@+id/warlock_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Warlock"
+        app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+        app:layout_constraintStart_toEndOf="@+id/cleric_checkbox"
+        app:layout_constraintEnd_toStartOf="@+id/paladin_checkbox"/>
+    <CheckBox
+        android:id="@+id/wizard_checkbox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Wizard"
+        app:layout_constraintTop_toBottomOf="@+id/bard_checkbox"
+        app:layout_constraintStart_toEndOf="@+id/druid_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/submit_new_character"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/account_logged_in_manage_homebrew"
+        android:icon="@drawable/ic_create_character_24dp"
+        android:title="Manage homebrew"
+        android:orderInCategory="0"/>
+    <item
+        android:id="@+id/account_logged_in_create_homebrew"
+        android:icon="@drawable/ic_create_character_24dp"
+        android:title="Create homebrew"
+        android:orderInCategory="1"/>
+    <item
+        android:id="@+id/account_logged_in_manage_comments"
+        android:icon="@drawable/ic_create_character_24dp"
+        android:title="Your comments"
+        android:orderInCategory="2"/>
+    <item
+        android:id="@+id/account_logged_in_settings"
+        android:icon="@drawable/ic_create_character_24dp"
+        android:title="Account settings"
+        android:orderInCategory="3"/>
+    <item
+        android:id="@+id/account_logged_in_logout"
+        android:icon="@drawable/ic_create_character_24dp"
+        android:title="Logout"
+        android:orderInCategory="4"/>
+</menu>
