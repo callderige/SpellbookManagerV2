@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -247,8 +248,14 @@ public class SpellDetailsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            Log.d("complete", result+"");
-            homebrewRating.setText(result);
+            try {
+                int rating = Integer.parseInt(result);
+                homebrewRating.setText(result);
+            } catch (NumberFormatException nfe) {
+                Snackbar snackbar = Snackbar.make(findViewById(R.id.activity_spell_details_container), "Error retrieving homebrew rating", Snackbar.LENGTH_LONG);
+                snackbar.show();
+                homebrewRating.setText("0");
+            }
         }
     }
 }
