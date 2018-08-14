@@ -178,15 +178,15 @@ public class CommentActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            super.onPostExecute(result);
+            //super.onPostExecute(result);
             ArrayList<String> homebrewComments = new ArrayList<>();
-            if (!result.equals("getYourHomebrew|failed|")) {
+            if (!result.contains("getYourHomebrew|failed|")) {
                 String rows[] = result.split("<br>");
                 for (int i = 0; i < rows.length; i++) {
                     homebrewComments.add(rows[i]);
                 }
             } else {
-                homebrewComments.add("This spell has no comments yet.");
+                homebrewComments.add("No comments to display.");
             }
             CommentsAdapter adapter = new CommentsAdapter(getBaseContext(), R.layout.listview_comment, homebrewComments);
             commentListView.setAdapter(adapter);
