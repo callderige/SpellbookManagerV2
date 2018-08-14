@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -349,18 +350,25 @@ public class SearchFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             //super.onPostExecute(result);
-            String homebrew[]  = result.split("<br>");
-            ArrayList<String> homebrewToSync = new ArrayList<>();
-            DatabaseHelper databaseHelper2 = new DatabaseHelper(mContext);
-            for (int i = 0; i < homebrew.length; i++) {
-                homebrewToSync.add(homebrew[i]);
-            }
-
-            if (homebrewToSync.size() > 0) {
-                databaseHelper2.syncHomebrewContent(homebrewToSync);
-                Log.d("check", homebrewToSync.get(0));
+            String cleanedResult = result.substring(result.lastIndexOf("|~|") + 3);
+            String homebrew[]  = cleanedResult.split("<br>");
+            Log.d("ayy", homebrew[0]);
+            if (homebrew[0].equalsIgnoreCase("error")) {
+                Snackbar snackbar = Snackbar.make(view.getRootView(), "Error connecting to homebrew databse.", Snackbar.LENGTH_LONG);
+                snackbar.show();
             } else {
-                Log.d("check", "no found");
+                ArrayList<String> homebrewToSync = new ArrayList<>();
+                DatabaseHelper databaseHelper2 = new DatabaseHelper(mContext);
+                for (int i = 0; i < homebrew.length; i++) {
+                    homebrewToSync.add(homebrew[i]);
+                }
+
+                if (homebrewToSync.size() > 0) {
+                    databaseHelper2.syncHomebrewContent(homebrewToSync);
+                    Log.d("check", homebrewToSync.get(0));
+                } else {
+                    Log.d("check", "no found");
+                }
             }
         }
     }
