@@ -34,7 +34,6 @@ import java.util.Map;
 
 public class AccountCreateHomebrewActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
     LinearLayout createHomebrewEditTextsContainer;
     Spinner schoolSpinner;
     ConstraintLayout classCheckboxesContainer;
@@ -204,7 +203,7 @@ public class AccountCreateHomebrewActivity extends AppCompatActivity {
                 response = e.toString();
             }
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override

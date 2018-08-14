@@ -42,9 +42,7 @@ public class AccountLoggedInActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_account:
                     if (!item.isChecked()) {
-                        //Intent intent2 = new Intent(getBaseContext(), MainActivity.class);
-                        //intent2.putExtra("setFragment", R.layout.fragment_account);
-                        //startActivity(intent2);
+
                     }
                     return true;
             }

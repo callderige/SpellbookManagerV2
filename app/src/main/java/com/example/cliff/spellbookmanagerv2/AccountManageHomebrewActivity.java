@@ -61,9 +61,7 @@ public class AccountManageHomebrewActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_account:
                     if (!item.isChecked()) {
-                        //Intent intent2 = new Intent(getBaseContext(), MainActivity.class);
-                        //intent2.putExtra("setFragment", R.layout.fragment_account);
-                        //startActivity(intent2);
+
                     }
                     return true;
             }
@@ -192,7 +190,7 @@ public class AccountManageHomebrewActivity extends AppCompatActivity {
                 response = e.toString();
             }
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override
@@ -239,14 +237,12 @@ public class AccountManageHomebrewActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
             final TextView textView = view.findViewById(R.id.spell_name);
-            //int spellId = Integer.parseInt(textView.getTag().toString().replace("id_",""));
             AlertDialog alertDialog = new AlertDialog.Builder(AccountManageHomebrewActivity.this).create();
             alertDialog.setTitle("Choose option for " +textView.getText());
             alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "DELETE",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             callApi call = new callApi();
-                            int accountId = sharedPreferences.getInt("accountId", -1);
                             int homebrewId = Integer.parseInt(textView.getTag().toString().replace("id_", ""));
                             Log.d("gettag", "onItemClick: " +homebrewId);
                             call.execute("deleteHomebrew", "ignore", homebrewId+"");
@@ -269,6 +265,4 @@ public class AccountManageHomebrewActivity extends AppCompatActivity {
             alertDialog.show();
         }
     };
-
-
 }

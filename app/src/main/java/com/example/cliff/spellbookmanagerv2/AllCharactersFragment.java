@@ -1,13 +1,10 @@
 package com.example.cliff.spellbookmanagerv2;
 
-import android.os.TransactionTooLargeException;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,13 +19,10 @@ import java.util.ArrayList;
 
 public class AllCharactersFragment extends Fragment {
     protected FloatingActionButton floatingActionButton;
-    protected ArrayList<String> allCharacters;
     protected DatabaseHelper databaseHelper;
     protected ListView listView;
     protected View view;
     protected Button button;
-    protected FragmentTransaction fragmentTransaction;
-    SearchFragment searchFragment = new SearchFragment();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

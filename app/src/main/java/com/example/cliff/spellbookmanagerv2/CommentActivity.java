@@ -1,18 +1,15 @@
 package com.example.cliff.spellbookmanagerv2;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -116,7 +113,7 @@ public class CommentActivity extends AppCompatActivity {
             }
 
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override
@@ -173,12 +170,11 @@ public class CommentActivity extends AppCompatActivity {
             }
 
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override
         protected void onPostExecute(String result) {
-            //super.onPostExecute(result);
             ArrayList<String> homebrewComments = new ArrayList<>();
             if (!result.contains("getYourHomebrew|failed|")) {
                 String rows[] = result.split("<br>");
@@ -190,7 +186,6 @@ public class CommentActivity extends AppCompatActivity {
             }
             CommentsAdapter adapter = new CommentsAdapter(getBaseContext(), R.layout.listview_comment, homebrewComments);
             commentListView.setAdapter(adapter);
-            //commentListView.setOnItemClickListener(onItemClickHandler);
         }
     }
 
@@ -206,9 +201,7 @@ public class CommentActivity extends AppCompatActivity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_comment, parent, false);
             }
             TextView textView = convertView.findViewById(R.id.comment);
-            //String id = str.split("\\|")[0];
             String comment = str;
-            //textView.setTag("id_"+id);
             textView.setText(comment);
             return convertView;
         }

@@ -1,7 +1,6 @@
 package com.example.cliff.spellbookmanagerv2;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -28,8 +27,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 public class AccountEditHomebrewActivity extends AppCompatActivity {
     Button button;

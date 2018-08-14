@@ -1,14 +1,12 @@
 package com.example.cliff.spellbookmanagerv2;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "SpellbookManagerDatabase.db";
@@ -359,15 +357,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()) {
-            //StringBuilder row = new StringBuilder();
             for (int i = 0; i < cursor.getColumnCount(); i++) {
-                //row.append(cursor.getString(i));
-                //if (i < cursor.getColumnCount()-1) {
-                    //row.append("|");
-                //}
                 spellDetails.add(cursor.getString(i));
             }
-            //spellDetails.add(row.toString());
             cursor.moveToNext();
         }
 

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
@@ -37,7 +36,6 @@ public class AccountFragment extends Fragment {
     EditText passwordEditText;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    boolean loggedIn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -154,7 +152,7 @@ public class AccountFragment extends Fragment {
                 response = e.toString();
             }
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override

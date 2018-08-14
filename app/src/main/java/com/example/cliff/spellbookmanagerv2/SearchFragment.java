@@ -200,12 +200,11 @@ public class SearchFragment extends Fragment {
             }
 
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override
         protected void onPostExecute(String result) {
-            //super.onPostExecute(result);
             spells = result.split("<br>");
             DatabaseHelper databaseHelper2 = new DatabaseHelper(mContext);
             for (int i = 0; i < spells.length; i++) {
@@ -344,12 +343,11 @@ public class SearchFragment extends Fragment {
                 response = e.toString();
             }
 
-            return response; //result.toString();
+            return response;
         }
 
         @Override
         protected void onPostExecute(String result) {
-            //super.onPostExecute(result);
             String cleanedResult = result.substring(result.lastIndexOf("|~|") + 3);
             String homebrew[]  = cleanedResult.split("<br>");
             Log.d("ayy", homebrew[0]);
