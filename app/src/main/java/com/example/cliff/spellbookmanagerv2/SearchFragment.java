@@ -1,5 +1,6 @@
 package com.example.cliff.spellbookmanagerv2;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -34,6 +35,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -67,12 +69,8 @@ public class SearchFragment extends Fragment {
         }
         classCheckBox = view.findViewById(R.id.search_by_class);
         editText = view.findViewById(R.id.search_for_spell);
-        //callApi call = new callApi(getContext());
-        //call.execute("syncDatabase");
-        //callApiHomebrew call2 = new callApiHomebrew(getContext());
-        //call2.execute("syncHomebrew");
-        callApiHomebrewSync call3 = new callApiHomebrewSync(getContext());
-        call3.execute("syncHomebrew");
+        CallApi syncHomebrew = new CallApi(view);
+        syncHomebrew.execute("syncHomebrew");
         imageButton = view.findViewById(R.id.submit_spell_search);
         imageButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -298,76 +296,6 @@ public class SearchFragment extends Fragment {
                 databaseHelper2.populateTableWithHomebrew(name, castingTime, components, material, ritual, concentration, description, duration, level, spellRange, school, classes, isSpellHomebrew, homebrewId, belongsToAccountId);
             }
             Log.d("complete", "sync complete");
-        }
-    }
-
-    private class callApiHomebrewSync extends AsyncTask<String, Integer, String> {
-        private Context mContext;
-
-        public callApiHomebrewSync (Context context) {
-            mContext = context;
-        }
-
-        @Override
-        protected void onPreExecute() {
-
-        }
-
-        @Override
-        protected String doInBackground(String... params)  {
-            String action = params[0];
-            String response = "";
-            StringBuilder result = new StringBuilder();
-            try {
-                URL url = new URL("http://ochofuzzycheese.000webhostapp.com/");
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setDoOutput(true);
-                urlConnection.setRequestMethod("POST");
-                OutputStream os = urlConnection.getOutputStream();
-                BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(os, "UTF-8"));
-                writer.write(URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode(action, "UTF-8"));
-                writer.flush();
-                writer.close();
-                os.close();
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    result.append(line);
-                }
-                response = result.toString();
-
-            }
-            catch (Exception e) {
-                response = e.toString();
-            }
-
-            return response;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            String cleanedResult = result.substring(result.lastIndexOf("|~|") + 3);
-            String homebrew[]  = cleanedResult.split("<br>");
-            Log.d("ayy", homebrew[0]);
-            if (homebrew[0].equalsIgnoreCase("error")) {
-                Snackbar snackbar = Snackbar.make(view.getRootView(), "Error connecting to homebrew databse.", Snackbar.LENGTH_LONG);
-                snackbar.show();
-            } else {
-                ArrayList<String> homebrewToSync = new ArrayList<>();
-                DatabaseHelper databaseHelper2 = new DatabaseHelper(mContext);
-                for (int i = 0; i < homebrew.length; i++) {
-                    homebrewToSync.add(homebrew[i]);
-                }
-
-                if (homebrewToSync.size() > 0) {
-                    databaseHelper2.syncHomebrewContent(homebrewToSync);
-                    Log.d("check", homebrewToSync.get(0));
-                } else {
-                    Log.d("check", "no found");
-                }
-            }
         }
     }
 }
