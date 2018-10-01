@@ -173,8 +173,12 @@ public class CallApi extends AsyncTask<String, String, String> {
         String cleanedResult = apiResponse.substring(apiResponse.lastIndexOf("|~|") + 3);
         String remoteHomebrew[]  = cleanedResult.split("<br>");
         if (remoteHomebrew[0].equalsIgnoreCase("error")) {
-            Snackbar snackbar = Snackbar.make(mWeakReferenceView.get().getRootView(), "Error connecting to homebrew databse.", Snackbar.LENGTH_LONG);
-            snackbar.show();
+            try {
+                Snackbar snackbar = Snackbar.make(view, "Error connecting to homebrew databse.", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            } catch (IllegalArgumentException illegalArgumentException) {
+                Log.d("illegalArgException", illegalArgumentException.toString());
+            }
         } else {
             ArrayList<String> homebrewToSync = new ArrayList<>();
             DatabaseHelper databaseHelper = new DatabaseHelper(view.getContext());
