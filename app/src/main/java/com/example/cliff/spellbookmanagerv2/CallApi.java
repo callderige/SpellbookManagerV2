@@ -1,13 +1,8 @@
 package com.example.cliff.spellbookmanagerv2;
 
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import java.io.BufferedInputStream;
@@ -22,7 +17,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class CallApi extends AsyncTask<String, String, String> {
     private String mAction = "";
@@ -119,7 +113,7 @@ public class CallApi extends AsyncTask<String, String, String> {
             Local database related API calls
             --------------------------------*/
             case "syncHomebrew": {
-                apiResponse = SyncHomebrew(params);
+                apiResponse = syncHomebrew(params);
                 break;
             }
 
@@ -139,13 +133,13 @@ public class CallApi extends AsyncTask<String, String, String> {
             Local database related API calls
             --------------------------------*/
             case "syncHomebrew": {
-                SyncHomebrewResponse(result);
+                syncHomebrewResponse(result);
                 break;
             }
         }
     }
 
-    private String SyncHomebrew(String[] apiParams) {
+    private String syncHomebrew(String[] apiParams) {
         StringBuilder apiResponse = new StringBuilder();
         String action = apiParams[0];
         try {
@@ -174,7 +168,7 @@ public class CallApi extends AsyncTask<String, String, String> {
         return apiResponse.toString();
     }
 
-    private void SyncHomebrewResponse(String apiResponse) {
+    private void syncHomebrewResponse(String apiResponse) {
         View view = mWeakReferenceView.get().getRootView();
         String cleanedResult = apiResponse.substring(apiResponse.lastIndexOf("|~|") + 3);
         String remoteHomebrew[]  = cleanedResult.split("<br>");
